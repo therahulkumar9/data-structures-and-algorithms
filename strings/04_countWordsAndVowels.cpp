@@ -17,5 +17,17 @@ int main() {
     cout << "Total number of Vowels: " << vcount << endl;
     cout << "Total number of Consonants: " << ccount << endl;
 
+    // Count Word
+    int word = 0;
+    for(int i = 0; A[i] != '\0'; i++){
+        if(A[i] == ' ' && i > 0 && A[i-1] != ' '){
+            word++;
+        }
+    }
+    // If the string is non-empty, the word count is word + 1
+    if (A[0] != '\0') {
+        word++;
+    }
+    cout << "Total number of word in string A is: " << word << endl;
     return 0;
 }
