@@ -1,6 +1,25 @@
 #include <iostream>
 using namespace std;
 
+// Second method of reverse a string
+
+    void reverseString(char str[]){
+        int i, j;
+        for(i = 0; str[i] != '\0'; i++){
+            // Empty
+        }
+
+        i--;
+        for(j=0; j < i; j++, i--){
+            char temp;
+            temp = str[i];
+            str[i] = str[j];
+            str[j] = temp; 
+        }
+
+        cout << "Now string is: " << str << endl;
+    }
+
 int main() {
     char A[] = "Python"; // Original string
     char B[7];
@@ -20,5 +39,7 @@ int main() {
 
     cout << "Reversed string is: " << B << endl; // Output using cout
 
+    char C[] = "Rahul Kumar";
+    reverseString(C);
     return 0;
 }
