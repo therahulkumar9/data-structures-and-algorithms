@@ -1,6 +1,23 @@
 #include <iostream>
 using namespace std;
 
+void checkPalindrome(char str[]){
+    int i = 0;
+    while(str[i] != '\0'){
+        i++;
+    }
+    i--;
+    int j = 0;
+    while(j < i){
+        if(str[i] != str[j]){
+            cout << "String is not a palindrome"<< endl;
+            return;
+        }
+        i--;
+        j++;
+    }
+    cout << "String is a palindrome" << endl; // If all characters match
+}
 int main() {
     // Comparing strings
     char A[] = "Painter";
@@ -20,5 +37,7 @@ int main() {
     else 
         cout << "Greater" << endl;
     
+    char str[] = "madam";
+    checkPalindrome(str);
     return 0;
 }
