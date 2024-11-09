@@ -49,5 +49,7 @@ int main(){
 
     display(m);
 
+    printf("Value at index(1,1) is: %d", get(m, 1, 1));
+
     return 0;
 }
