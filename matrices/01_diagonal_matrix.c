@@ -6,13 +6,13 @@ struct Matrix{
     int n;
 };
 
-void set(struct Matrix *m, int i, int j, int x)
+void set_value(struct Matrix *m, int i, int j, int x)
 {
     if(i == j)
         m->A[i - 1] = x;
 }
 
-int get(struct Matrix m, int i, int j)
+int get_value(struct Matrix m, int i, int j)
 {
     if(i == j) 
         return m.A[i - 1];
@@ -20,7 +20,7 @@ int get(struct Matrix m, int i, int j)
         return 0;
 }
 
-void display(struct Matrix m)
+void display_matrix(struct Matrix m)
 {
     int i, j;
     for(i = 0; i<m.n; i++)
@@ -42,14 +42,14 @@ int main(){
     struct Matrix m;
     m.n = 4;
 
-    set(&m, 1, 1, 5);
-    set(&m, 2, 2, 8);
-    set(&m, 3, 3, 9);
-    set(&m, 4, 4, 12);
+    set_value(&m, 1, 1, 5);
+    set_value(&m, 2, 2, 8);
+    set_value(&m, 3, 3, 9);
+    set_value(&m, 4, 4, 12);
 
-    display(m);
+    display_matrix(m);
 
-    printf("Value at index(1,1) is: %d", get(m, 1, 1));
+    printf("Value at index(1,1) is: %d", get_value(m, 1, 1));
 
     return 0;
 }
