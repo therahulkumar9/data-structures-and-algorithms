@@ -8,6 +8,11 @@ private:
     int* elements;
 
 public: 
+
+    Diagonal(){
+        int size = 4;
+        elements = new int[size];
+    }
     // Constructor with a parameter for matrix size
     Diagonal(int size) {
         this->size = size;
