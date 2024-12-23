@@ -55,6 +55,18 @@ int lengthOfLL(Node* head) {
     return cnt;
 }
 
+// Search
+
+int checkIfPresent(Node* head, int val){
+    Node* temp = head;
+    while(temp){
+        if(temp->data == val) return 1;
+        temp = temp->next;
+    }
+
+    return 0;
+}
+
 int main(){
     vector<int> arr={2,5,8,7};
     Node* y= new Node(arr[0]);
@@ -66,6 +78,10 @@ int main(){
     printList(head);
     cout << "\nThe length of Linked List: ";
     cout << lengthOfLL(head);
-
+    cout << "\nPresent or Not- ";
+    if(checkIfPresent(head, 8))
+        cout <<  "YES";
+    else 
+        cout << "NO";
     return 0;
 }
