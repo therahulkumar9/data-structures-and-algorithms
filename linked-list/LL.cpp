@@ -43,6 +43,18 @@ void printList(Node* head){
     cout << endl;
 }
 
+// Function to calculate the length linked list
+
+int lengthOfLL(Node* head) {
+    int cnt = 0;
+    Node* temp = head;
+    while (temp) {
+        temp = temp->next;
+        cnt++;
+    }
+    return cnt;
+}
+
 int main(){
     vector<int> arr={2,5,8,7};
     Node* y= new Node(arr[0]);
@@ -52,6 +64,8 @@ int main(){
     cout << "Linked List: ";
     cout << head->data << "\n";
     printList(head);
+    cout << "\nThe length of Linked List: ";
+    cout << lengthOfLL(head);
 
     return 0;
 }
