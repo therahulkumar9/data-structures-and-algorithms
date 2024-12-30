@@ -72,6 +72,8 @@ int main(){
     Node* y= new Node(arr[0]);
     cout<<y<<'\n'; // returns the memory value
     cout<<y->data<<'\n'; // returns the data stored at that memory point
+
+    
     Node* head = convertArr2LL(arr);
     cout << "Linked List: ";
     cout << head->data << "\n";
