@@ -57,6 +57,13 @@ bool checkIfPresent(Node *head, int val)
     return false;
 }
 
+Node* deleteHead(Node* head) {
+    Node* temp = head;
+    head = head->next;
+    free(temp);
+    return head;
+}
+
 int main()
 {
     vector<int> arr = {5, 2, 4, 9};
@@ -71,14 +78,20 @@ int main()
 
     while (temp)
     {
-        cout << "theisjio" << temp->next << endl;
+        cout << " " << temp->next << endl;
         cout << temp->data << endl;
         temp = temp->next;
     }
 
-    cout << "Count: " << lengthOfLL(head);
+    cout << "Count: " << lengthOfLL(head) << endl;
 
     cout << "Is 20 present? " << (checkIfPresent(head, 20) ? "Yes" : "No") << endl;
     cout << "Is 9 present? " << (checkIfPresent(head, 9) ? "Yes" : "No") << endl;
+
+    head = deleteHead(head);
+    cout << head->data << endl;
+    cout << "Now count: " << lengthOfLL(head) << endl;
+
+
     return 0;
 }
