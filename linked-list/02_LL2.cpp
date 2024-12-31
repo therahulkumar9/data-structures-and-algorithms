@@ -18,7 +18,7 @@ struct Node
     }
 };
 
-Node *converTArr2LL(vector<int> &arr)
+Node *convertArr2LL(vector<int> &arr)
 {
     Node *head = new Node(arr[0]);
     Node *mover = head;
@@ -85,7 +85,7 @@ int main()
     Node *y = new Node(arr[0], nullptr);
     cout << y->next;
 
-    Node *head = converTArr2LL(arr);
+    Node *head = convertArr2LL(arr);
     cout << "Head" << head->next->next->next->next;
 
     Node *temp = head;
