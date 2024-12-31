@@ -92,6 +92,24 @@ Node* removeEl(Node* head, int el) {
     return head;
 }
 
+Node* insertHead(Node* head, int val) {
+    Node* temp = new Node(val, head);
+    return temp;
+};
+
+Node* insertTail(Node* head, int val) {
+    if(head == NULL){
+        return new Node(val);
+    }
+    Node* temp = head;
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+    Node* newNode = new Node(val);
+    temp->next = newNode;
+    return head;
+}
+
 int main() {
     vector<int> arr = {5, 3, 7, 9, 2, 8, 3};
     Node* head = convertArr2LL(arr);
@@ -107,6 +125,13 @@ int main() {
     head = removeEl(head, 8);
     head = removeEl(head, 3);
     head = removeEl(head, 5);
+    printLL(head);
+    cout << endl;
+    head = insertHead(head, 12);
+    printLL(head);
+
+    cout << endl;
+    head = insertTail(head, 89);
     printLL(head);
     return 0;
 }
