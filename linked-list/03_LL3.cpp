@@ -65,6 +65,33 @@ Node* removeK(Node* head, int k) {
     return head;
 }
 
+Node* removeEl(Node* head, int el) {
+    if(head == nullptr) return head;
+    if(head->data == el) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return head;
+    }
+
+    Node* temp = head;
+    Node* prev = nullptr;
+
+    while (temp != nullptr)
+    {
+        if(temp->data == el) {
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }
+
+        prev = temp;
+        temp = temp->next;
+    }
+    
+    return head;
+}
+
 int main() {
     vector<int> arr = {5, 3, 7, 9, 2, 8, 3};
     Node* head = convertArr2LL(arr);
@@ -73,8 +100,13 @@ int main() {
         cout << head->next->data << endl;
     }
     printLL(head);
-
+    cout << '\n';
     head = removeK(head, 2);
+    printLL(head);
+    cout << '\n';
+    head = removeEl(head, 8);
+    head = removeEl(head, 3);
+    head = removeEl(head, 5);
     printLL(head);
     return 0;
 }
