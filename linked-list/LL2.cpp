@@ -64,6 +64,21 @@ Node* deleteHead(Node* head) {
     return head;
 }
 
+Node* deleteTail(Node* head) {
+    if(head == NULL || head->next->next == NULL) return NULL;
+    Node* temp = head;
+    while (temp->next->next != NULL)
+    {
+        temp = temp->next;
+    }
+    
+    free(temp->next);
+    temp->next = nullptr;
+
+    return head;
+
+}
+
 int main()
 {
     vector<int> arr = {5, 2, 4, 9};
@@ -90,6 +105,10 @@ int main()
 
     head = deleteHead(head);
     cout << head->data << endl;
+    cout << "Now count: " << lengthOfLL(head) << endl;
+
+    head = deleteTail(head);
+    cout << head->next->data << endl;
     cout << "Now count: " << lengthOfLL(head) << endl;
 
 
