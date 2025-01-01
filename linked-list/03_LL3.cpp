@@ -110,6 +110,34 @@ Node* insertTail(Node* head, int val) {
     return head;
 }
 
+Node* insertPosition(Node* head, int el, int k) {
+    if(head == NULL) {
+        if(k == 1) return new Node(el);
+        else return NULL;
+    }
+
+    if(k == 1) {
+        Node* temp = new Node(el, head);
+        return temp;
+        // in one line
+        // return new Node(el, head);
+    }
+
+    int cnt = 0;
+    Node* temp = head;
+    while(temp != NULL) {
+        cnt++;
+        if(cnt == k - 1) {
+            Node* x = new Node(el);
+            x->next = temp->next;
+            temp->next = x;
+            break;
+        }
+        temp = temp->next;
+    }
+
+    return head;
+}
 int main() {
     vector<int> arr = {5, 3, 7, 9, 2, 8, 3};
     Node* head = convertArr2LL(arr);
@@ -132,6 +160,11 @@ int main() {
 
     cout << endl;
     head = insertTail(head, 89);
+    printLL(head);
+
+
+    cout << endl;
+    head = insertPosition(head, 8, 3);
     printLL(head);
     return 0;
 }
