@@ -55,6 +55,22 @@ Node* deleteHead(Node* head) {
     return head;
 }
 
+Node* deleteTail(Node* head) {
+    if(head == NULL || head->next == NULL) {
+        return NULL;
+    }
+
+    Node* tail = head;
+    while(tail->next != NULL) {
+        tail = tail->next;
+    }
+
+    Node* newTail = tail->back;
+    newTail->next = nullptr;
+    tail->back = nullptr;
+    delete tail;
+    return head;
+}
 int main() {
     vector<int> arr = {12, 5, 8, 7};
     Node* head = convertArr2DLL(arr);
@@ -62,6 +78,10 @@ int main() {
 
     cout << endl;
     head = deleteHead(head);
+    print(head);
+
+    cout << endl;
+    head = deleteTail(head);
     print(head);
     return 0;
 }
