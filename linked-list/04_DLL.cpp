@@ -106,6 +106,24 @@ Node* removeKthElement(Node* head, int k) {
     return head;
 }
 
+void deleteNode(Node* temp) {
+    Node* prev = temp->back;
+    Node* front = temp->next;
+
+    if(front == NULL) {  
+        prev->next = nullptr;
+        temp->back = nullptr;
+        free(temp);
+        return;
+    }
+
+    prev->next = front;
+    front->back = prev;
+
+    temp->next = temp->back = nullptr;
+    free(temp);
+}
+
 int main() {
     vector<int> arr = {12, 5, 8, 7, 15, 2, 4};
     Node* head = convertArr2DLL(arr);
@@ -121,6 +139,11 @@ int main() {
 
     cout << endl;
     head = removeKthElement(head, 3);
+    print(head);
+
+
+    cout << endl;
+    deleteNode(head->next->next);
     print(head);
     return 0;
 }
