@@ -124,6 +124,63 @@ void deleteNode(Node* temp) {
     free(temp);
 }
 
+// Insertion of Node
+
+Node* insertBeforeHead(Node* head, int val) {
+    Node* newHead = new Node(val, head, nullptr);
+    head->back = newHead;
+    return newHead;
+}
+
+Node* insertBeforeTail(Node* head, int val) {
+
+    if(head->next == NULL) {
+        return insertBeforeHead(head, val);
+    }
+
+    Node* tail = head;
+    while(tail -> next != NULL) {
+        tail = tail->next;
+    }
+
+    Node* prev = tail->back;
+    
+    Node* newNode = new Node(val, tail, prev);
+    prev->next = newNode;
+    tail->back = newNode;
+
+    return head;
+
+}
+
+Node* insertBeforeKthElement(Node* head, int k, int val) {
+    if(k == 1) {
+        return insertBeforeHead(head, val);
+    }
+
+    Node* temp = head;
+    int cnt = 0;
+
+    while(temp != NULL) {
+        cnt++;
+        if(cnt == k) break;
+        temp = temp->next;
+    }
+
+    Node* prev = temp->back;
+    Node* newNode = new Node(val, temp, prev);
+    prev->next = newNode;
+    temp->back = newNode;
+    return head;
+}
+
+void insertBeforeNode(Node* node, int val) {
+    Node* prev = node->back;
+    Node* newNode = new Node(val, node, prev);
+    prev->next = newNode;
+    node->back = newNode;
+}
+
 int main() {
     vector<int> arr = {12, 5, 8, 7, 15, 2, 4};
     Node* head = convertArr2DLL(arr);
@@ -144,6 +201,27 @@ int main() {
 
     cout << endl;
     deleteNode(head->next->next);
+    print(head);
+
+    // Insertion
+
+    cout << endl;
+    head = insertBeforeHead(head, 13);
+    print(head);
+
+
+    cout << endl;
+    head = insertBeforeTail(head, 15);
+    print(head);
+
+
+    cout << endl;
+    head = insertBeforeKthElement(head, 3, 7);
+    print(head);
+
+
+    cout << endl;
+    insertBeforeNode(head->next->next, 91);
     print(head);
     return 0;
 }
